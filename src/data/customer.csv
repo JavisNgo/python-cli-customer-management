@@ -1,0 +1,2 @@
+username,full_name,year_of_birth,password,email,create_at,update_at
+user1,full_name_user1,1992,123,user1@example.com,2025-07-26 11:30:00,2025-07-26 11:30:00
