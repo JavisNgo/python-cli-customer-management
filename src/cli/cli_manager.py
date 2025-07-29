@@ -1,5 +1,4 @@
 from cli.cli_interface import show_menu
-import service.customer_service as customer_service
 
 from service.customer_service import CustomerService
 
@@ -18,11 +17,15 @@ def manage_menu():
         match option:
             case 1:
                 customer_service.print_all_customers()
-                manage_menu()
-                break
+                option = show_menu(options)
             case 2:
-                customer_service.create_customer()
-                break
+                result = customer_service.create_customer()
+                if result:
+                    print("Create successful")
+                    option = show_menu(options)
+                else:
+                    print("Create fail")
+                    option = show_menu(options)
             case default:
                 print("Quit")
                 break
