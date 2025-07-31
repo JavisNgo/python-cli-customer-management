@@ -40,3 +40,18 @@ def create_customer(customer_model):
     except Exception as e:
         print(f"Error creating customer {customer_model.username}: {str(e)}")
         return False
+
+def get_customer_by_email(email):
+    reader = csv_handler.get_reader(customer_file_path)
+    for row in reader:
+        if row['email'] == email:
+            return Customer(
+                row['username'],
+                row['full_name'],
+                row['year_of_birth'],
+                row['password'],
+                row['email'],
+                row['created_at'],
+                row['updated_at']
+            )
+    return None
